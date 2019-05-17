@@ -1,0 +1,17 @@
+<ion-toolbar>
+    <ion-title>{{header.title}}</ion-title>
+    <ion-buttons slot="start">
+        <ion-button *ngIf="headerdata.ismenu" (click)="showMenu()">
+            <ion-icon name="menu"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+        <ion-button>
+            <ion-icon name="search"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="headerdata.showcart" routerLink="/sidemenu/sidemenu/tabs/tabs/orders">
+            <ion-icon name="cart"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+</ion-toolbar>
+
