@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-orders',
-  templateUrl: './orders.page.html',
-  styleUrls: ['./orders.page.scss'],
+    selector: 'app-orders',
+    templateUrl: './orders.page.html',
+    styleUrls: ['./orders.page.scss'],
 })
 export class OrdersPage implements OnInit {
 
-  constructor() { }
+    header: any;
 
-  ngOnInit() {
-  }
+    constructor() {
+        this.header = {title: 'Orders', ismenu: true, showcart: false};
+    }
+
+    ngOnInit() {
+    }
 
 }

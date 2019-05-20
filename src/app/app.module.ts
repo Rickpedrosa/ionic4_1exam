@@ -12,13 +12,18 @@ import {AppRoutingModule} from './app-routing.module';
 import {AngularFireModule} from '@angular/fire';
 import {firebaseConfig} from '../environments/environment';
 import {AngularFirestoreModule, FirestoreSettingsToken} from '@angular/fire/firestore';
+import {AppbarComponentModule} from './components/appbar/appbar.component.module';
+import {SidemenuPageModule} from './pages/sidemenu/sidemenu.module';
+import {AppbarComponent} from './components/appbar/appbar.component';
+import {TabsPageModule} from './pages/tabs/tabs.module';
 
 
 @NgModule({
     declarations: [AppComponent],
-    entryComponents: [],
+    entryComponents: [AppbarComponent],
     imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-        AngularFireModule.initializeApp(firebaseConfig), AngularFirestoreModule],
+        AngularFireModule.initializeApp(firebaseConfig), AngularFirestoreModule, AppbarComponentModule,
+        SidemenuPageModule, TabsPageModule],
     providers: [
         StatusBar,
         SplashScreen,

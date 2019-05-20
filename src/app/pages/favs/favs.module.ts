@@ -1,26 +1,28 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {Routes, RouterModule} from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { FavsPage } from './favs.page';
+import {FavsPage} from './favs.page';
+import {AppbarComponent} from '../../components/appbar/appbar.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: FavsPage
-  }
+    {
+        path: '',
+        component: FavsPage
+    }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
-  ],
-  declarations: [FavsPage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        RouterModule.forChild(routes)
+    ],
+    declarations: [FavsPage]
 })
-export class FavsPageModule {}
+export class FavsPageModule {
+}
