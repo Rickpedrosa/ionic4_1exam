@@ -21,7 +21,7 @@ import {SidemenuPageModule} from './sidemenu/sidemenu.module';
         imports: [CommonModule,
             FormsModule,
             IonicModule,
-        SidemenuPageModule],
+            SidemenuPageModule],
         exports: [],
         declarations: [
             CartPage,
@@ -34,9 +34,7 @@ import {SidemenuPageModule} from './sidemenu/sidemenu.module';
             HomePage,
             OrdersPage,
             SidemenuPage,
-            TabsPage,
-            AppbarComponent
-        ],
+            TabsPage],
         entryComponents: [SidemenuPage]
     }
 )

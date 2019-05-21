@@ -12,23 +12,23 @@ import {AppRoutingModule} from './app-routing.module';
 import {AngularFireModule} from '@angular/fire';
 import {firebaseConfig} from '../environments/environment';
 import {AngularFirestoreModule, FirestoreSettingsToken} from '@angular/fire/firestore';
-import {AppbarComponentModule} from './components/appbar/appbar.component.module';
 import {SidemenuPageModule} from './pages/sidemenu/sidemenu.module';
-import {AppbarComponent} from './components/appbar/appbar.component';
 import {TabsPageModule} from './pages/tabs/tabs.module';
+import {APP_BASE_HREF} from '@angular/common';
 
 
 @NgModule({
     declarations: [AppComponent],
-    entryComponents: [AppbarComponent],
+    entryComponents: [],
     imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-        AngularFireModule.initializeApp(firebaseConfig), AngularFirestoreModule, AppbarComponentModule,
+        AngularFireModule.initializeApp(firebaseConfig), AngularFirestoreModule,
         SidemenuPageModule, TabsPageModule],
     providers: [
         StatusBar,
         SplashScreen,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
-        {provide: FirestoreSettingsToken, useValue: {}}
+        {provide: FirestoreSettingsToken, useValue: {}},
+        {provide: APP_BASE_HREF, useValue: '/'}
     ],
     bootstrap: [AppComponent]
 })

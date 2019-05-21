@@ -9,7 +9,12 @@ import {SidemenuPage} from './sidemenu.page';
 
 const routes: Routes = [
     {
-        path: 'sidemenu',
+        path: '',
+        redirectTo: 'tabs',
+        pathMatch: 'full'
+    },
+    {
+        path: '',
         component: SidemenuPage,
         children: [
             {path: 'tabs', loadChildren: '../tabs/tabs.module#TabsPageModule'},
@@ -18,11 +23,6 @@ const routes: Routes = [
             {path: 'cat-furniture', loadChildren: '../cat-furniture/cat-furniture.module#CatFurniturePageModule'},
             {path: 'cat-others', loadChildren: '../cat-others/cat-others.module#CatOthersPageModule'}
         ]
-    },
-    {
-        path: '',
-        redirectTo: 'sidemenu/tabs',
-        pathMatch: 'full'
     }
 ];
 
