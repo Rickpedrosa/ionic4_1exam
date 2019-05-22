@@ -26,7 +26,7 @@ const routes: Routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: '../catalogue/catalogue.module#CataloguePageModule',
+                        loadChildren: '../catalogue/catalogue.module#CataloguePageModule'
                     }
                 ]
             },

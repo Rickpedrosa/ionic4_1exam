@@ -15,6 +15,8 @@ import {AngularFirestoreModule, FirestoreSettingsToken} from '@angular/fire/fire
 import {SidemenuPageModule} from './pages/sidemenu/sidemenu.module';
 import {TabsPageModule} from './pages/tabs/tabs.module';
 import {APP_BASE_HREF} from '@angular/common';
+import {DatabaseService} from './services/database.service';
+import {AngularFireDatabase, AngularFireDatabaseModule} from '@angular/fire/database';
 
 
 @NgModule({
@@ -22,10 +24,12 @@ import {APP_BASE_HREF} from '@angular/common';
     entryComponents: [],
     imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
         AngularFireModule.initializeApp(firebaseConfig), AngularFirestoreModule,
-        SidemenuPageModule, TabsPageModule],
+        SidemenuPageModule, TabsPageModule, AngularFireDatabaseModule],
     providers: [
         StatusBar,
         SplashScreen,
+        DatabaseService,
+        AngularFireDatabase,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         {provide: FirestoreSettingsToken, useValue: {}},
         {provide: APP_BASE_HREF, useValue: '/'}

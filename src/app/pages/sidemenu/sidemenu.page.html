@@ -9,14 +9,14 @@
 
         <ion-content>
             <ion-list>
-                <!--<ion-menu-toggle auto-hide="false" *ngFor="let p of pages">-->
-                <!--<ion-item [routerLink]="p.url" routerDirection="root"-->
-                <!--[class.active-item]="selectedPath.startsWith(p.url)">-->
-                <!--<ion-label>-->
-                <!--{{ p.title }}-->
-                <!--</ion-label>-->
-                <!--</ion-item>-->
-                <!--</ion-menu-toggle>-->
+                <ion-menu-toggle autoHide="false" *ngFor="let p of pages">
+                    <ion-item [routerLink]="p.url" routerDirection="root"
+                              [class.active-item]="selectedPath.startsWith(p.url)">
+                        <ion-label>
+                            {{ p.title }}
+                        </ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
 
             </ion-list>
 
@@ -25,3 +25,4 @@
     </ion-menu>
 
     <ion-router-outlet id="content" main></ion-router-outlet>
+</ion-split-pane>
