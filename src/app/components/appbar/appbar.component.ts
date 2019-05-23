@@ -28,8 +28,8 @@ export class AppbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.db.getObserveCart().subscribe(cart => {
-            console.log(cart);
+        this.db.getObserveAmountCart().subscribe(cart => {
+            console.log('cart sub comp', cart);
             this.cartCount = cart;
         });
     }

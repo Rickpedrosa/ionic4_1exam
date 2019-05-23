@@ -12,7 +12,7 @@ export class DatabaseService {
     favorites: string[] = [];
     cart: Art[] = [];
     oldArt: Art;
-    observableCart: BehaviorSubject<number> = new BehaviorSubject(this.cart.length);
+    observableCart: BehaviorSubject<number> = new BehaviorSubject(0);
 
     constructor(private afDB: AngularFireDatabase,
                 private toast: ToastController) {
@@ -30,7 +30,7 @@ export class DatabaseService {
         return this.cart;
     }
 
-    getObserveCart(): Observable<number> {
+    getObserveAmountCart(): Observable<number> {
         return this.observableCart.asObservable();
     }
 
@@ -54,7 +54,6 @@ export class DatabaseService {
     addToCarrito(article: Art) {
         if (this.cart.length === 0) {
             this.cart.unshift(article);
-            this.observableCart.next(this.cart.length);
             this.showToast('1 ' + article.article + ' añadido al carrito!');
         } else {
             if (this.isAnOldArticle(article.article)) {
@@ -64,36 +63,41 @@ export class DatabaseService {
                     this.cart[this.cart.indexOf(this.oldArt)].quantity);
             } else {
                 this.cart.unshift(article);
-                this.observableCart.next(this.cart.length);
                 this.showToast('1 ' + article.article + ' añadido al carrito!');
             }
         }
+        this.observableCart.next(this.extracted());
         this.oldArt = null;
-        console.log('obvscart', this.observableCart.getValue());
-        console.log('Tamaño cart: (add) ' + this.cart.length);
-        console.log('Tamaño item cart: (add) ' + this.cart[0].quantity);
+    }
+
+    private extracted() {
+        let count = 0;
+        for (const value of this.cart) {
+            count = count + value.quantity;
+        }
+        console.log('size full cart', count);
+        if (count > 0) {
+            return count;
+        }
+        return 0;
     }
 
     removeFromCarrito(article: Art) {
         if (this.cart.length === 0) {
-            console.log('1st if');
             this.showToast('No le des a quitar, no hay items de tipo ' + article.article + ' en el carro');
         } else {
-            console.log('2nd if');
             if (this.isAnOldArticle(article.article)) {
-                this.cart[this.cart.indexOf(this.oldArt)].quantity =
-                    this.cart[this.cart.indexOf(this.oldArt)].quantity - 1;
+                this.cart[this.cart.indexOf(this.oldArt)].quantity = this.cart[this.cart.indexOf(this.oldArt)].quantity - 1;
                 this.showToast('1 ' + article.article + ' eliminado del carro, quedan ' +
                     this.cart[this.cart.indexOf(this.oldArt)].quantity);
-                console.log('Tamaño item cart: (remove) ' + this.cart[0].quantity);
                 if (this.cart[this.cart.indexOf(this.oldArt)].quantity === 0) {
                     this.cart.splice(this.cart.indexOf(this.oldArt), 1);
                     this.showToast('Ya no hay ningún item de ' + article.article + ', para por favor.');
                 }
+                this.observableCart.next(this.extracted());
             }
         }
         this.oldArt = null;
-        console.log('Tamaño cart: (remove) ' + this.cart.length);
     }
 
     isAnOldArticle(artName: string) {

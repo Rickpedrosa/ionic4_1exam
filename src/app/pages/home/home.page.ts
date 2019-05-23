@@ -15,9 +15,6 @@ export class HomePage implements OnInit {
     constructor(private serviceDatabase: DatabaseService) {
         this.header = {title: 'Home', ismenu: true, showcart: true};
         this.obv = {nov: this.serviceDatabase.loadNovedadesTable()};
-        this.serviceDatabase.getObserveCart().subscribe(cart => {
-            console.log('home sub', cart);
-        });
     }
 
     ngOnInit() {
