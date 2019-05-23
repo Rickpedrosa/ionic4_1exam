@@ -7,9 +7,9 @@ import {IonicModule} from '@ionic/angular';
 
 @NgModule({
     imports: [
+        IonicModule,
         CommonModule,
         FormsModule,
-        IonicModule,
     ]
 })
 export class AppbarComponentModule {

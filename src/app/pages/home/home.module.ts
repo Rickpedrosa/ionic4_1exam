@@ -6,9 +6,6 @@ import {Routes, RouterModule} from '@angular/router';
 import {IonicModule} from '@ionic/angular';
 
 import {HomePage} from './home.page';
-import {AppbarComponent} from '../../components/appbar/appbar.component';
-import App = firebase.app.App;
-import {AppbarComponentModule} from '../../components/appbar/appbar.component.module';
 import {SharedModule} from '../../shared/shared.module';
 
 const routes: Routes = [

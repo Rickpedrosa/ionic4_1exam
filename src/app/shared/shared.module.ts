@@ -7,8 +7,8 @@ import {ObservableDisplayerComponent} from '../components/observable-displayer/o
 @NgModule({
     declarations: [AppbarComponent, ObservableDisplayerComponent],
     imports: [
-        CommonModule,
-        IonicModule
+        IonicModule,
+        CommonModule
     ],
     exports: [AppbarComponent, ObservableDisplayerComponent]
 })

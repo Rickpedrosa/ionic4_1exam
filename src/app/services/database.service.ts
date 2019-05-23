@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {Art} from '../interfaces/interface.cart';
 import {ToastController} from '@ionic/angular';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -11,6 +12,7 @@ export class DatabaseService {
     favorites: string[] = [];
     cart: Art[] = [];
     oldArt: Art;
+    observableCart: BehaviorSubject<number> = new BehaviorSubject(this.cart.length);
 
     constructor(private afDB: AngularFireDatabase,
                 private toast: ToastController) {
@@ -26,6 +28,10 @@ export class DatabaseService {
 
     getCart() {
         return this.cart;
+    }
+
+    getObserveCart(): Observable<number> {
+        return this.observableCart.asObservable();
     }
 
     addItemToFavorites(item: string) {
@@ -48,6 +54,7 @@ export class DatabaseService {
     addToCarrito(article: Art) {
         if (this.cart.length === 0) {
             this.cart.unshift(article);
+            this.observableCart.next(this.cart.length);
             this.showToast('1 ' + article.article + ' añadido al carrito!');
         } else {
             if (this.isAnOldArticle(article.article)) {
@@ -57,10 +64,12 @@ export class DatabaseService {
                     this.cart[this.cart.indexOf(this.oldArt)].quantity);
             } else {
                 this.cart.unshift(article);
+                this.observableCart.next(this.cart.length);
                 this.showToast('1 ' + article.article + ' añadido al carrito!');
             }
         }
         this.oldArt = null;
+        console.log('obvscart', this.observableCart.getValue());
         console.log('Tamaño cart: (add) ' + this.cart.length);
         console.log('Tamaño item cart: (add) ' + this.cart[0].quantity);
     }

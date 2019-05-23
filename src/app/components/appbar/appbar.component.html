@@ -11,6 +11,7 @@
         </ion-button>
         <ion-button *ngIf="headerdata.showcart" routerLink="/sidemenu/sidemenu/tabs/tabs/orders">
             <ion-icon name="cart"></ion-icon>
+            <ion-badge>{{cartCount}}</ion-badge>
         </ion-button>
     </ion-buttons>
 </ion-toolbar>
