@@ -22,6 +22,26 @@ export class DatabaseService {
         return this.afDB.list('novedades').valueChanges();
     }
 
+    loadPedidosTable() {
+        return this.afDB.list('pedidos').valueChanges();
+    }
+
+    loadMueblesDecorItems() {
+        return this.afDB.list('/catalogo/decoracion').valueChanges();
+    }
+
+    loadTextilItems() {
+        return this.afDB.list('/catalogo/textil').valueChanges();
+    }
+
+    loadComidaItems() {
+        return this.afDB.list('/catalogo/comida').valueChanges();
+    }
+
+    loadAccesoriosItems() {
+        return this.afDB.list('/catalogo/accesorios').valueChanges();
+    }
+
     getFavorites() {
         return this.favorites;
     }
@@ -113,9 +133,13 @@ export class DatabaseService {
     async showToast(msg: string) {
         const toasting = await this.toast.create({
             message: msg,
-            duration: 3000,
-            position: 'bottom'
+            duration: 2300,
+            position: 'middle'
         });
         toasting.present();
+    }
+
+    cleanCart() {
+        this.observableCart.next(0);
     }
 }

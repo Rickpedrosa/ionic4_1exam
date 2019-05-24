@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MenuController} from '@ionic/angular';
 import {DatabaseService} from '../../services/database.service';
+import {Location} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-appbar',
@@ -11,15 +13,27 @@ export class AppbarComponent implements OnInit {
     headerdata: any;
     cartCount = 0;
 
-    constructor(public mnCtrl: MenuController, private db: DatabaseService) {
+    constructor(public mnCtrl: MenuController,
+                private db: DatabaseService,
+                private location: Location,
+                private router: Router) {
     }
 
     showMenu() {
         this.mnCtrl.toggle();
     }
 
+    back() {
+        this.location.back();
+    }
+
+    goSearchPage() {
+        this.router.navigateByUrl('search');
+    }
+
     @Input()
     set header(header: any) {
+        console.log(header);
         this.headerdata = header;
     }
 
@@ -29,7 +43,6 @@ export class AppbarComponent implements OnInit {
 
     ngOnInit() {
         this.db.getObserveAmountCart().subscribe(cart => {
-            console.log('cart sub comp', cart);
             this.cartCount = cart;
         });
     }

@@ -11,19 +11,19 @@ export class SidemenuPage implements OnInit {
     pages = [
         {
             title: 'Food',
-            url: '/sidemenu/cat-food'
+            url: '/sidemenu/tabs/catalogue/cat-food'
         },
         {
             title: 'Textil',
-            url: '/sidemenu/cat-textil'
+            url: '/sidemenu/tabs/catalogue/cat-textil'
         },
         {
             title: 'Furniture',
-            url: '/sidemenu/cat-furniture'
+            url: '/sidemenu/tabs/catalogue/cat-furniture'
         },
         {
             title: 'Others',
-            url: '/sidemenu/cat-others'
+            url: '/sidemenu/tabs/catalogue/cat-others'
         }
     ];
     selectedPath = '';

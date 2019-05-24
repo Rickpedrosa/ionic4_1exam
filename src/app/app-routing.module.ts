@@ -4,6 +4,7 @@ import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 const routes: Routes = [
     {path: '', redirectTo: 'sidemenu', pathMatch: 'full'},
     {path: 'sidemenu', loadChildren: './pages/sidemenu/sidemenu.module#SidemenuPageModule'},
+    {path: 'search', loadChildren: './pages/search/search.module#SearchPageModule'},
 ];
 
 @NgModule({

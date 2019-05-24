@@ -1,15 +1,23 @@
 <ion-toolbar>
     <ion-title>{{header.title}}</ion-title>
-    <ion-buttons slot="start">
-        <ion-button *ngIf="headerdata.ismenu" (click)="showMenu()">
+
+    <ion-buttons slot="start"  *ngIf="headerdata.ismenu">
+        <ion-button (click)="showMenu()">
             <ion-icon name="menu"></ion-icon>
         </ion-button>
     </ion-buttons>
+
+    <ion-buttons slot="start" *ngIf="headerdata.ismenu === false">
+        <ion-button (click)="back()">
+            <ion-icon name="arrow-round-back"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+
     <ion-buttons slot="end">
-        <ion-button>
+        <ion-button (click)="goSearchPage()">
             <ion-icon name="search"></ion-icon>
         </ion-button>
-        <ion-button *ngIf="headerdata.showcart" routerLink="/sidemenu/sidemenu/tabs/tabs/orders">
+        <ion-button *ngIf="headerdata.showcart" routerLink="/sidemenu/tabs/orders">
             <ion-icon name="cart"></ion-icon>
             <ion-badge>{{cartCount}}</ion-badge>
         </ion-button>

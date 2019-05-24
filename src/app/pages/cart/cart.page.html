@@ -1,6 +1,33 @@
 <app-appbar [header]="header">
 </app-appbar>
 
-<ion-content>
+<ion-content *ngIf="this.carrito.length > 0">
+    <div style="text-align:center"><h2><b>{{totalPrice()}}</b></h2></div>
 
+    <ion-list padding>
+        <ion-button size="block" (click)="cleanCarrito()">
+            Limpiar carro
+        </ion-button>
+        <ion-button size="block" (click)="buy()">
+            Comprar
+        </ion-button>
+    </ion-list>
+    <ion-list>
+        <ion-item *ngFor="let data of carrito">
+            <ion-card>
+                <ion-card-content padding>
+                    <img [src]='data.img' float-left class="img">
+                    {{data.article}}
+                    <br/>
+                    <h2><b>Nºs of items: {{data.quantity}}</b></h2>
+                    <h2><b>Price per unit: €{{data.price}}</b></h2>
+                    <h2><b>{{totalPricePerItem(data.price, data.quantity)}}</b></h2>
+                </ion-card-content>
+            </ion-card>
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-content padding *ngIf="this.carrito.length == 0">
+    No products added to the cart yet!
 </ion-content>

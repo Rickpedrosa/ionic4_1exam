@@ -5,13 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CatOthersPage } from './cat-others.page';
-import {SharedModule} from '../../shared/shared.module';
+import { SearchPage } from './search.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: CatOthersPage
+    component: SearchPage
   }
 ];
 
@@ -20,9 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CatOthersPage]
+  declarations: [SearchPage]
 })
-export class CatOthersPageModule {}
+export class SearchPageModule {}

@@ -10,7 +10,6 @@ export class HomePage implements OnInit {
 
     header: any;
     obv: any;
-    placeHolder = '';
 
     constructor(private serviceDatabase: DatabaseService) {
         this.header = {title: 'Home', ismenu: true, showcart: true};

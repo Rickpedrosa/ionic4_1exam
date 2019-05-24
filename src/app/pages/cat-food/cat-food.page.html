@@ -1,9 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>cat-food</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-appbar [header]="header">
+</app-appbar>
+<!--<ion-header>-->
+<!--<ion-toolbar>-->
 
-<ion-content>
+<!--<ion-buttons slot="start">-->
+<!--<ion-back-button></ion-back-button>-->
+<!--</ion-buttons>-->
 
+<!--<ion-title>truehome</ion-title>-->
+<!--</ion-toolbar>-->
+<!--</ion-header>-->
+
+
+<ion-content padding>
+    <app-observable-displayer [observable]="obv">
+    </app-observable-displayer>
 </ion-content>

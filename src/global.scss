@@ -22,3 +22,9 @@ ion-toolbar {
 .nofaved {
   --color: #A9A9A9;
 }
+
+.scroll-content {
+  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+}
